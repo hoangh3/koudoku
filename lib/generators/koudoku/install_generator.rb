@@ -35,7 +35,7 @@ module Koudoku
       template "config/initializers/koudoku.rb"
 
       # Generate subscription.
-      generate("model", "subscription stripe_id:string plan:references last_four:string coupon_id:integer card_type:string current_price:float #{subscription_owner_model}_id:integer")
+      generate("model", "subscription stripe_id:string plan:references last_four:string coupon:references card_type:string current_price:float #{subscription_owner_model}:references")
       template "app/models/subscription.rb"
 
       # Add the plans.
