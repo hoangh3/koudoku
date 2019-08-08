@@ -34,17 +34,17 @@ module Koudoku
       require "securerandom"
       template "config/initializers/koudoku.rb"
 
-      # Generate subscription.
-      generate("model", "subscription stripe_id:string plan:references last_four:string coupon:references card_type:string current_price:float #{subscription_owner_model}:references")
-      template "app/models/subscription.rb"
+      # Add coupons.
+      generate("model coupon code:string free_trial_length:string")
+      template "app/models/coupon.rb"
 
       # Add the plans.
       generate("model", "plan name:string stripe_id:string price:float interval:string features:text highlight:boolean display_order:integer")
       template "app/models/plan.rb"
 
-      # Add coupons.
-      generate("model coupon code:string free_trial_length:string")
-      template "app/models/coupon.rb"
+      # Generate subscription.
+      generate("model", "subscription stripe_id:string plan:references last_four:string coupon:references card_type:string current_price:float #{subscription_owner_model}:references")
+      template "app/models/subscription.rb"
 
       # Update the owner relationship.
       inject_into_class "app/models/#{subscription_owner_model}.rb", subscription_owner_model.camelize.constantize,
