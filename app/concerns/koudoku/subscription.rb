@@ -5,7 +5,7 @@ module Koudoku::Subscription
 
     # We don't store these one-time use tokens, but this is what Stripe provides
     # client-side after storing the credit card information.
-    attr_accessor :credit_card_token
+    attr_accessor :credit_card_token, :name
 
     belongs_to :plan, optional: true
 
@@ -70,6 +70,7 @@ module Koudoku::Subscription
               customer_attributes = {
                 description: subscription_owner_description,
                 email: subscription_owner_email,
+                name: name,
                 card: credit_card_token # obtained with Stripe.js
               }
 
