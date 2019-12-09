@@ -5,6 +5,7 @@ Koudoku.setup do |config|
 
   Stripe.api_version = '2017-08-15' # Making sure the API version used is compatible.
   # config.prorate = false # Default is true, set to false to disable prorating subscriptions
+  # config.enable_incomplete_payments = false # Default is true, set to false to disable imcomplete subscriptions
   # config.free_trial_length = 30
 
   # Specify layout you want to use for the subscription pages, default is application
