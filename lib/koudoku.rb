@@ -27,6 +27,8 @@ module Koudoku
   mattr_accessor :prorate
   @@prorate = true
 
+  mattr_accessor :enable_incomplete_payments
+  @@enable_incomplete_payments = false
 
   @@layout = nil
 
